@@ -2,12 +2,12 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div className='w-full min-h-screen flex flex-col justify-center items-center'> 
-      <h1 className='text-3xl font-semibold text-blue-950 mt-10'>
+    <div  className='w-full min-h-screen flex flex-col justify-center items-center'> 
+      <h1  className='text-3xl font-semibold text-blue-950 mt-10'>
         CONTACT US
       </h1>
 
-      <h3 className='text-gray-400 text-lg mt-3'>
+      <h3  className='text-gray-400 text-lg mt-3'>
         IIIT SNP - Studios
       </h3>
 
@@ -19,7 +19,7 @@ const Contact = () => {
           {/* Address */}
           <div className="flex-1 px-5 py-5">
             <h2 className="font-bold text-blue-900 mb-2">ADDRESS</h2>
-            <p className="text-gray-700">
+            <p  className="text-gray-700">
               X423+VH3, IIIT Delhi Sonipat Campus, SH 11, Khewra, Haryana
             </p>
           </div>
@@ -31,7 +31,7 @@ const Contact = () => {
               alt="Banyan Logo"
               className="w-40 h-auto"
             />
-            <p className="mt-2 text-gray-700 text-xl">
+            <p  className="mt-2 text-gray-700 text-xl">
               A Source guiding towards the <span className="font-bold">Open Source</span>
             </p>
           </div>

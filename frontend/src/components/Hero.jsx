@@ -1,8 +1,11 @@
+import data from "../json/Hero.json";
 
 const Hero = () => {
+
+
   return (
     
-    <div className="h-screen z-40 w-full bg-[url('https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg')] 
+    <div id="HeroMain" className="h-screen z-40 w-full bg-[url('https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg')] 
     bg-no-repeat bg-center bg-cover flex flex-col justify-center items-center gap-9">
        
         <div className="h-40 w-40 mt-24">
@@ -10,13 +13,13 @@ const Hero = () => {
 
       <img src="https://rha.socet.edu.in/img/redhat.png" alt="" />
         </div>
-        <h1 className="text-3xl font-bold text-white">Bridge the gap between education and industry</h1>
+        <h1 id="HomeHeading3" className="text-3xl font-bold text-white">{data[0].HeroMain.HomeHeading3}</h1>
         <div className="text-xl font-bold text-white flex flex-col justify-center items-center">
-            <h1>Red Hat Academy turns academic institutions into centers for enterprise-ready talent</h1>
-            <h1 >by outfitting them with Red Hat training and certification.</h1>
+            <h1 id="HomeHeading1">{data[0].HeroMain.HomeHeading1}</h1>
+            <h1 id="HomeHeading2">{data[0].HeroMain.HomeHeading2}</h1>
         </div>
 
-        <button className="bg-transparent border-2 font-semibold hover:bg-red-500 hover:transition-colors hover:duration-700 text-white border-red-700 px-8 py-2 rounded-3xl"><a href="">About RHA - SOGI</a></button>
+        <button id="HomeButton" className="bg-transparent border-2 font-semibold hover:bg-red-500 hover:transition-colors hover:duration-700 text-white border-red-700 px-8 py-2 rounded-3xl"><a href="">About RHA - SOGI</a></button>
 
     </div>
   )
