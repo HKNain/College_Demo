@@ -1,9 +1,12 @@
 
 const Hero = () => {
   return (
-    <div className="h-screen w-full bg-[url('https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg')] 
+    
+    <div className="h-screen z-40 w-full bg-[url('https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg')] 
     bg-no-repeat bg-center bg-cover flex flex-col justify-center items-center gap-9">
+       
         <div className="h-40 w-40 mt-24">
+        
 
       <img src="https://rha.socet.edu.in/img/redhat.png" alt="" />
         </div>
