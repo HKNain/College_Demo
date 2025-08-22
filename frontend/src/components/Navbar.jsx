@@ -20,7 +20,7 @@ function Navbar() {
 
   return (
     <div
-      className={`fixed  top-0 left-0 w-full p-4  duration-500 transition-all flex justify-around items-center ${
+      className={`fixed  top-0 left-0 z-10 w-full p-4  duration-500 transition-all flex justify-around items-center ${
         scrolled ? "bg-gray-900 text-white shadow-lg h-20 " : "bg-transparent text-black h-28"
       }`}
     >
