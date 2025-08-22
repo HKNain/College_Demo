@@ -1,0 +1,17 @@
+export const gallerySection = [
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/13184363/pexels-photo-13184363.jpeg',
+    'https://images.pexels.com/photos/6536034/pexels-photo-6536034.jpeg',
+    'https://images.pexels.com/photos/6858295/pexels-photo-6858295.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/220444/pexels-photo-220444.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+    'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
+]

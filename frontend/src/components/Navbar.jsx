@@ -31,7 +31,7 @@ function Navbar() {
         <div className="flex gap-6 text-black">
             {
                 navbarOptions.map((option)=>(
-                    <a href={`#${option}`} className=" relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] 
+                    <a href={`#${option}`} key={option} className=" relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] 
                  after:h-[3px] after:w-0 after:bg-red-800 
                  after:transition-all after:duration-300 
                  hover:after:w-full hover:text-white text-gray-300 font-semibold ">{option}</a>
