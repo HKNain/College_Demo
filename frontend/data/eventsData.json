@@ -1,0 +1,52 @@
+{
+  "2017": [
+    {
+      "date": "November 14, 2017 - December 18, 2017",
+      "title": "Red Hat Academic Training Program",
+      "description": "Prof. Satvik Khara provided a golden opportunity of REDHAT training coordinated by Prof. Karishma Gandhi and Prof. Darshil Shah with 22 faculties and 6 Lab Assistants participating."
+    }
+  ],
+  "2018": [
+    {
+      "date": "March 10, 2018",
+      "title": "AI Workshop",
+      "description": "A hands-on workshop on Artificial Intelligence was organized with industry experts."
+    },
+    {
+      "date": "August 22, 2018",
+      "title": "Hackathon",
+      "description": "IIIT Sonepat students participated in a 36-hour national hackathon on innovation."
+    }
+  ],
+  "2019": [
+    {
+      "date": "January 5, 2019",
+      "title": "Tech Fest 2019",
+      "description": "Annual tech fest with robotics, coding competitions, and guest lectures."
+    },
+    {
+      "date": "July 18, 2019",
+      "title": "Blockchain Seminar",
+      "description": "Industry professionals delivered talks on blockchain applications."
+    },
+    {
+      "date": "December 3, 2019",
+      "title": "Cultural Fest",
+      "description": "Cultural events including music, dance, and theater performances."
+    }
+  ],
+  "2020": [
+    {
+      "date": "Online Semester",
+      "title": "Virtual Classes",
+      "description": "Due to COVID-19, classes were conducted online with virtual labs and seminars."
+    }
+  ],
+  "2021": [
+    {
+      "date": "April 15, 2021",
+      "title": "Startup Pitching Event",
+      "description": "Students pitched startup ideas to investors in a demo day event."
+    }
+  ]
+}
