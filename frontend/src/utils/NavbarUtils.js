@@ -6,4 +6,5 @@ export const navbarOptions = [
     "Gallery",
     "Testinomials",
     "Technical Associate",
+    "Contact"
 ]
