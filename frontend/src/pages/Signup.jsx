@@ -26,6 +26,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const dataToSend = { ...formData, role }; 
+  
 
   try {
     const response = await api.post('/api/auth/signup', dataToSend);
