@@ -5,6 +5,7 @@ import cors from "cors"
 
 import connectToDatabase from "./database/connectToDatabase.js";
 import authRoutes from "./routes/auth.routes.js"
+import editRoutes from "./routes/edit.route.js"
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended:true}))
 
 app.use("/api/auth", authRoutes);
+app.use("/admin", editRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
