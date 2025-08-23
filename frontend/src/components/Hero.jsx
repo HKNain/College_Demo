@@ -1,4 +1,3 @@
-import data from "../json/Hero.json";
 
 const Hero = () => {
 
@@ -13,10 +12,10 @@ const Hero = () => {
 
       <img src="https://rha.socet.edu.in/img/redhat.png" alt="" />
         </div>
-        <h1 id="HomeHeading3" className="text-3xl font-bold text-white">{data[0].HeroMain.HomeHeading3}</h1>
+        <h1 id="HomeHeading3"  className="text-3xl font-bold text-white">Bridge the gap between education and industry</h1>
         <div className="text-xl font-bold text-white flex flex-col justify-center items-center">
-            <h1 id="HomeHeading1">{data[0].HeroMain.HomeHeading1}</h1>
-            <h1 id="HomeHeading2">{data[0].HeroMain.HomeHeading2}</h1>
+            <h1 id="HomeHeading1">Red Hat Academy turns academic institutions into centers for enterprise-ready talent</h1>
+            <h1 id="HomeHeading2">by outfitting them with Red Hat training and certification.</h1>
         </div>
 
         <button id="HomeButton" className="bg-transparent border-2 font-semibold hover:bg-red-500 hover:transition-colors hover:duration-700 text-white border-red-700 px-8 py-2 rounded-3xl"><a href="">About RHA - SOGI</a></button>

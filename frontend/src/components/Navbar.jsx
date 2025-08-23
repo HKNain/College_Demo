@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {navbarOptions} from "../utils/NavbarUtils";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +17,11 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  
+  const styleProp = `relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] 
+               after:h-[3px] after:w-0 after:bg-red-800 
+               after:transition-all after:duration-300 
+               hover:after:w-full hover:text-white text-gray-300 font-semibold`
 
   return (
     <div
@@ -31,12 +36,11 @@ function Navbar() {
         <div className="flex gap-6 text-black">
             {
                 navbarOptions.map((option)=>(
-                    <a href={`#${option}`} key={option} className=" relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] 
-                 after:h-[3px] after:w-0 after:bg-red-800 
-                 after:transition-all after:duration-300 
-                 hover:after:w-full hover:text-white text-gray-300 font-semibold ">{option}</a>
+                    <a href={`#${option}`} key={option} className={`${styleProp}`}>{option}</a>
                 ))
             }
+            <Link to={"/signup"}  className={`${styleProp}`}>SignUp</Link>
+            <Link to={"/login"} className={`${styleProp}`}>login</Link>
         </div>
     </div>
   );
