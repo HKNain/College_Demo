@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import {api} from "../utils/axios.js"
+ 
 
 const Signup = () => {
-  const [role, setRole] = useState(''); // Optional role
+  const [role, setRole] = useState(''); 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -20,10 +22,14 @@ const Signup = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Signup Data:', formData, 'Role:', role || 'None');
-    // Add signup logic here
+    try{
+      await api.post('/signup',);
+    }catch(error){
+
+    }
   };
 
   return (
