@@ -2,7 +2,21 @@ import { useState, useEffect } from "react";
 import { api } from "../utils/axios"; // adjust path if needed
 import { roleUtil } from "../utils/roleUtil"; // temporarily not used for testing
 
-const Hero =   () => {
+const Hero =    () => {
+  const [userRole, setUserRole] = useState(null);
+
+useEffect(() => {
+  const fetchRole = async () => {
+    try {
+      const role = await roleUtil();
+      setUserRole(role);
+      console.log("User Role:", role);
+    } catch (err) {
+      console.error("Error fetching role:", err);
+    }
+  };
+  fetchRole();
+}, []);
   const [editableId, setEditableId] = useState(null);
   const [heroData, setHeroData] = useState({
     HeroHeading1:
@@ -16,7 +30,6 @@ useEffect(() => {
     try {
       const response = await api.get("/admin/geteditdata");
       setHeroData(response.data.heroData);
-      console.log("Fetched heroData:", response.data);
     } catch (error) {
       console.error("API Error:", error.response || error.message || error);
     }
@@ -27,24 +40,19 @@ useEffect(() => {
   
 
 
-  useEffect(() => {
-    console.log("Updated heroData:", heroData);
-  }, [heroData]);
+  
 
   const handleEdit = (id) => {
-    if (roleUtil === "Admin"){
+    if (userRole === "Admin"){
     setEditableId(id); }
     
   };
 
   const handleBlur = async (id, e) => {
-    console.log("handleBlur triggered for:", id);
 
     const newValue = e.target.innerText.trim();
-    console.log("New Value:", newValue);
 
     if (heroData[id] === newValue) {
-      console.log("Value unchanged, skipping update");
       setEditableId(null);
       return;
     }
