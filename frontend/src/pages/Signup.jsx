@@ -24,12 +24,21 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Signup Data:', formData, 'Role:', role || 'None');
-    try{
-      await api.post('/signup',);
-    }catch(error){
+    const dataToSend = { ...formData, role }; 
 
-    }
+  try {
+    const response = await api.post('/api/auth/signup', dataToSend);
+    console.log('Signup successful:', response.data);
+
+  } catch (error) {
+    console.log('Error in signUp:', error.response?.data || error.message);
+  }
+  setFormData({
+    email: '',
+    password: '',
+    securityKey: '',
+  }),
+  setRole('')
   };
 
   return (
@@ -72,7 +81,7 @@ const Signup = () => {
             className="w-full border p-2 rounded mt-1"
           >
             <option value="">Select role</option>
-            <option value="User">User</option>
+            <option value="user">User</option>
             <option value="Admin">Admin</option>
           </select>
         </label>

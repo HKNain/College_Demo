@@ -8,8 +8,9 @@ export const signup = async (req, res) => {
       email, 
       password, 
       role,
-      securityKey
+      
     } = req.body;
+    
 
     if (
       !email ||
@@ -30,7 +31,7 @@ export const signup = async (req, res) => {
       .json({ error: "email already exists" });
     }
 
-    if (role === "admin") {
+    if (role === "Admin") {
       if (securityKey !== process.env.ADMIN_SECURITY_KEY) {
         return res
         .status(400)
@@ -40,6 +41,7 @@ export const signup = async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+    console.log ( " hello world ")
 
     const newUser = new User({
       email,
