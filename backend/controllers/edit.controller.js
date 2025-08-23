@@ -23,11 +23,15 @@ export const postEditData = async (req, res) => {
     if (Object.keys(updates).length === 0) {
       return res.status(200).json({ success: "No changes detected", heroData: hero });
     }
+    console.log ( updates )
+  const updatedHero = await editModel.findOneAndUpdate(
+  { _id: hero._id }, // filter
+  { $set: updates }, // update
+  { new: true, runValidators: true }
+);
 
-    const updatedHero = await editModel.findOneAndUpdate({}, updates, {
-      new: true,
-      runValidators: true,
-    });
+console.log (updatedHero)
+
 
     return res.status(200).json({
       success: "Updated Successfully",
