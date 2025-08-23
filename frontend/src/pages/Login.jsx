@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
+import {api} from "../utils/axios.js"
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate()
   const [role, setRole] = useState('User'); // Default role
   const [formData, setFormData] = useState({
     email: '',
@@ -22,11 +25,35 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Login Data:', formData, 'Role:', role);
-    // Add login logic here
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log('Login Data:', formData, 'Role:', role);
+
+  const dataToSend = { ...formData, role };
+
+  try {
+    const response = await api.post('/api/auth/login', dataToSend, {
+      withCredentials: true, // important so cookie is saved
+    });
+
+    console.log('Login successful:', response.data);
+
+    // ✅ Navigate based on role or just go home
+    if (response.status === 200) {
+      navigate("/")
+    }
+
+  } catch (error) {
+    console.log('Error in login:', error.response?.data || error.message);
+  }
+
+  setFormData({
+    email: '',
+    password: '',
+    securityKey: '',
+  });
+  setRole('User'); // reset to default
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-950">
