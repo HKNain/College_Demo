@@ -50,7 +50,7 @@ export const signup = async (req, res) => {
     });
 
     if (newUser) {
-      generateTokenAndSetCookie(newUser._id, res);
+      generateTokenAndSetCookie(newUser._id,role, res);
 
       await newUser.save();
 
@@ -97,7 +97,7 @@ export const login = async (req, res) => {
         .json({ error: `You are not authorised for this ${role}` });
     }
 
-    generateTokenAndSetCookie(user._id, res);
+    generateTokenAndSetCookie(user._id,role, res);
 
     res.status(200).json({
       _id: user._id,
