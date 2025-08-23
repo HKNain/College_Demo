@@ -25,7 +25,7 @@ const About = () => {
   // };
 
   return (
-    <div id="About" className="p-14 w-full flex justify-around items-center">
+    <div id="about" className="p-14 w-full flex justify-around items-center">
       <div className="w-1/3 text-black p-4 rounded-xl shadow-lg">
         <h1 id="Aboutheading" className="font-bold mb-2 text-3xl">
           RedHat Academy SOGI

@@ -2,7 +2,7 @@ import React from "react";
 
 const Technical = () => {
   return (
-    <div className="w-full flex bg-blue-50 flex-col justify-center items-center py-12">
+    <div id="technical" className="w-full flex bg-blue-50 flex-col justify-center items-center py-12">
       {/* Heading */}
       <h1 className="text-3xl font-bold text-blue-950 text-center">
         TECHNICAL ASSOCIATE

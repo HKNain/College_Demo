@@ -7,7 +7,7 @@ const Events = () => {
   const years = Object.keys(eventsData); 
 
   return (
-    <div className="w-full flex bg-blue-50 flex-col justify-center items-center"> 
+    <div id="events" className="w-full flex bg-blue-50 flex-col justify-center items-center"> 
       <h1 className="text-3xl font-semibold text-blue-950 mt-10">
         EVENTS
       </h1>

@@ -17,6 +17,13 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   
   const styleProp = `relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] 
                after:h-[3px] after:w-0 after:bg-red-800 
@@ -36,7 +43,7 @@ function Navbar() {
         <div className="flex gap-6 text-black">
             {
                 navbarOptions.map((option)=>(
-                    <a href={`#${option}`} key={option} className={`${styleProp}`}>{option}</a>
+                    <button onClick={() => scrollToSection(option.id)} href={`#${option}`} key={option} className={`${styleProp}`}>{option.label}</button>
                 ))
             }
             <Link to={"/signup"}  className={`${styleProp}`}>SignUp</Link>

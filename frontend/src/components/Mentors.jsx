@@ -3,7 +3,7 @@ import { Linkedin } from "lucide-react";
 
 const Mentors = () => {
   return (
-    <div className='w-full flex flex-col justify-center items-center'>
+    <div id='mentors' className='w-full flex flex-col justify-center items-center'>
         <h1 className='text-3xl font-semibold text-blue-950 mt-10'>
             DIRECTOR OF IIIT SNP
         </h1>

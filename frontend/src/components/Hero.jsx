@@ -4,7 +4,7 @@ const Hero = () => {
 
   return (
     
-    <div id="HeroMain" className="h-screen z-40 w-full bg-[url('https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg')] 
+    <div id="hero" className="h-screen z-40 w-full bg-[url('https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg')] 
     bg-no-repeat bg-center bg-cover flex flex-col justify-center items-center gap-9">
        
         <div className="h-40 w-40 mt-24">

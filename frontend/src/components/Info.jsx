@@ -32,7 +32,7 @@ const statsData = [
 
 const Info = () => {
   return (
-    <div
+    <div id="info"
       className="w-full bg-black bg-cover flex flex-col justify-center items-center bg-center py-16"
       style={{ backgroundImage: "url('/your-background.jpg')" }}
     >

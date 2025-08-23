@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
   const [role, setRole] = useState('User'); // Default role
@@ -29,6 +30,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-950">
+      <Navbar/>
       <form
         onSubmit={handleSubmit}
         className="bg-purple-500 p-8 rounded shadow-md w-full max-w-sm"

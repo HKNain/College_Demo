@@ -45,7 +45,7 @@ function Gallery() {
   };
 
   return (
-    <div className="w-full p-12 mt-3 flex flex-col justify-around items-center gap-8">
+    <div id="gallery" className="w-full p-12 mt-3 flex flex-col justify-around items-center gap-8">
       <div className="flex flex-col justify-center items-center gap-4">
         <h1 className="text-3xl text-black">GALLERY</h1>
         <p className="text-xl text-gray-400">
