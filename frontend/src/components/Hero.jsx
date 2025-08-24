@@ -1,23 +1,9 @@
 import { useState, useEffect } from "react";
 import { api } from "../utils/axios"; // adjust path if needed
-import { roleUtil } from "../utils/roleUtil"; // temporarily not used for testing
+// import { roleUtil } from "../utils/roleUtil"; // temporarily not used for testing
 
 const Hero =    () => {
-  const [userRole, setUserRole] = useState(null);
-
-useEffect(() => {
-  const fetchRole = async () => {
-    try {
-      const role = await roleUtil();
-      setUserRole(role);
-      console.log("User Role:", role);
-    } catch (err) {
-      console.error("Error fetching role:", err);
-    }
-  };
-  fetchRole();
-}, []);
-  const [editableId, setEditableId] = useState(null);
+  // const [userRole, setUserRole] = useState(null);
   const [heroData, setHeroData] = useState({
     HeroHeading1:
       "Red Hat Academy turns academic institutions into centers for enterprise-ready talent",
@@ -25,6 +11,9 @@ useEffect(() => {
     HeroHeading3: "Bridge the gap between education and industry",
     HeroButton: "About RHA - SOGI",
   });
+
+
+  const [editableId, setEditableId] = useState(null);
 useEffect(() => {
   const fetchData = async () => {
     try {
@@ -43,8 +32,9 @@ useEffect(() => {
   
 
   const handleEdit = (id) => {
-    if (userRole === "Admin"){
-    setEditableId(id); }
+    // if (userRole === "Admin"){
+    setEditableId(id); 
+  // }
     
   };
 
