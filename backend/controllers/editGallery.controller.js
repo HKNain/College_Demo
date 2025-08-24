@@ -1,15 +1,15 @@
-import editdata from "../models/edit.model.js";
+import editModel from "../models/editGallery.model.js";
 
-export const postEditData = async (req, res) => {
+export const postEditGalleryData = async (req, res) => {
   try {
     console.log(req.body);
     const updates = {};
 
-    let hero = await editdata.findOne();
+    let hero = await editModel.findOne();
 
     
     if (!hero) {
-      hero = new editdata(); 
+      hero = new editModel(); 
       await hero.save();
     }
 
@@ -24,7 +24,7 @@ export const postEditData = async (req, res) => {
       return res.status(200).json({ success: "No changes detected", heroData: hero });
     }
     console.log ( updates )
-  const updatedHero = await editdata.findOneAndUpdate(
+  const updatedHero = await editModel.findOneAndUpdate(
   { _id: hero._id }, // filter
   { $set: updates }, // update
   { new: true, runValidators: true }
@@ -44,12 +44,12 @@ console.log (updatedHero)
 };
 
 
-export const getEditData = async ( req, res ) =>{
+export const getEditGalleryData = async ( req, res ) =>{
       try{
-      const heroData = await editdata.findOne();
+      const heroData = await editModel.findOne();
       
       if (!heroData) {
-        heroData = new editdata()
+        heroData = new editModel()
        await heroData.save()
       }
        
