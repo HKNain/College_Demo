@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
-import { api } from "../utils/axios"; // adjust path if needed
-// import { roleUtil } from "../utils/roleUtil"; // temporarily not used for testing
+import { useState, useEffect, useRef } from "react";
+import { api } from "../utils/axios";
 
-const Hero =    () => {
-  // const [userRole, setUserRole] = useState(null);
+const Hero = () => {
   const [heroData, setHeroData] = useState({
     HeroHeading1:
       "Red Hat Academy turns academic institutions into centers for enterprise-ready talent",
@@ -12,34 +10,39 @@ const Hero =    () => {
     HeroButton: "About RHA - SOGI",
   });
 
+  // Simulated image data from backend, including _id and fileUrl
+  const [heroImage, setHeroImage] = useState({
+    _id: "68ac436a27b28e90daaed0bb", // ID of image document to PATCH later
+    fileUrl:
+      "https://ik.imagekit.io/kwy9fhvlz/SwasthyaLogo_Aapwocwwd.png", // default original image URL
+  });
 
-  const [editableId, setEditableId] = useState(null);
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await api.get("/admin/geteditdata");
-      setHeroData(response.data.heroData);
-    } catch (error) {
-      console.error("API Error:", error.response || error.message || error);
-    }
-  };
+  // Ref to hidden file input for image selection
+  const fileInputRef = useRef(null);
 
-  fetchData();
-}, []);
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get("/admin/geteditdata");
+        setHeroData(response.data.heroData);
 
+        // Also get image info from backend response if available
+        if (response.data.heroImage) {
+          setHeroImage(response.data.heroImage);
+        }
+      } catch (error) {
+        console.error("API Error:", error.response || error.message || error);
+      }
+    };
 
-  
+    fetchData();
+  }, []);
 
   const handleEdit = (id) => {
-    // if (userRole === "Admin"){
-    setEditableId(id); 
-  // }
-    
+    setEditableId(id);
   };
 
   const handleBlur = async (id, e) => {
-
     const newValue = e.target.innerText.trim();
 
     if (heroData[id] === newValue) {
@@ -52,7 +55,6 @@ useEffect(() => {
     setHeroData((prev) => ({ ...prev, [id]: newValue }));
 
     try {
-      console.log("Sending PATCH request to API...");
       const response = await api.patch("/admin/posteditdata", { [id]: newValue });
       console.log(`Updated ${id} successfully`, response.data);
     } catch (error) {
@@ -63,10 +65,12 @@ useEffect(() => {
     setEditableId(null);
   };
 
+  const [editableId, setEditableId] = useState(null);
+
   const EditableText = ({ id, className }) => (
     <h1
       id={id}
-      tabIndex={0} // make focusable
+      tabIndex={0}
       contentEditable={editableId === id}
       suppressContentEditableWarning={true}
       onClick={() => handleEdit(id)}
@@ -77,20 +81,54 @@ useEffect(() => {
     </h1>
   );
 
+  // Trigger hidden input when image right-clicked
+  const onImageRightClick = (e) => {
+    e.preventDefault();
+    fileInputRef.current && fileInputRef.current.click();
+  };
+
+  // Handle file selection and PATCH new image
+  const onFileSelected = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      // Send PATCH request to update image by id
+      const response = await api.patch(`/upload/change/${heroImage._id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // On success, update image URL to new one
+      if (response.status === 200) {
+        setHeroImage((prev) => ({ ...prev, fileUrl: response.data.fileUrl }));
+      }
+    } catch (error) {
+      console.error("Error uploading new image", error.response || error.message || error);
+    }
+  };
+
   return (
     <div
       id="hero"
-      className="h-screen z-40 w-full bg-[url('https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg')] 
-        bg-no-repeat bg-center bg-cover flex flex-col justify-center items-center gap-9"
+      className="h-screen z-40 w-full bg-no-repeat bg-center bg-cover flex flex-col justify-center items-center gap-9"
+      style={{ backgroundImage: `url(${heroImage.fileUrl})` }}
     >
       <div className="h-40 w-40 mt-24">
-        <img src="https://rha.socet.edu.in/img/redhat.png" alt="Red Hat Logo" />
+        {/* Image with onContextMenu for right-click */}
+        <img
+          src={heroImage.fileUrl}
+          alt="Hero"
+          onContextMenu={onImageRightClick}
+          className="cursor-pointer object-contain h-full w-full"
+        />
       </div>
 
-      <EditableText
-        id="HeroHeading3"
-        className="text-3xl font-bold text-white"
-      />
+      <EditableText id="HeroHeading3" className="text-3xl font-bold text-white" />
 
       <div className="text-xl font-bold text-white flex flex-col justify-center items-center">
         <EditableText id="HeroHeading1" className="" />
@@ -100,7 +138,7 @@ useEffect(() => {
       {/* Editable button */}
       <div
         role="button"
-        tabIndex={0} // make focusable
+        tabIndex={0}
         contentEditable={editableId === "HeroButton"}
         suppressContentEditableWarning={true}
         onClick={() => handleEdit("HeroButton")}
@@ -109,6 +147,15 @@ useEffect(() => {
       >
         {heroData.HeroButton}
       </div>
+
+      {/* Hidden file input for image selection */}
+      <input
+        type="file"
+        accept="image/*"
+        ref={fileInputRef}
+        style={{ display: "none" }}
+        onChange={onFileSelected}
+      />
     </div>
   );
 };
