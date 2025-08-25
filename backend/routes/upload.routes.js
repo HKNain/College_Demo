@@ -1,10 +1,13 @@
 import express from "express";
-import multer from "multer"
-import { fileUpload } from "../utils/upload.js";
+import multer from "multer";
+import { ImageonDB, updateImage } from "../controllers/img.controller.js";
 
 const router = express.Router();
+// Configure multer to use memory storage for buffers
+
 const upload = multer();
 
-router.post("/submit",upload.single("file"),fileUpload)
+router.post("/submit", upload.single("file"), ImageonDB);
+router.patch("/change/:id", upload.single("file"), updateImage);
 
 export default router;
