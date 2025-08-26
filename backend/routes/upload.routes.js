@@ -7,6 +7,7 @@ const router = express.Router();
 
 const upload = multer();
 
+router.get("find/")
 router.post("/submit", upload.single("file"), ImageonDB);
 router.patch("/change/:id", upload.single("file"), updateImage);
 
