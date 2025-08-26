@@ -1,7 +1,7 @@
 import axios from "axios";
 
     export  const api = axios.create({
-        baseURL: 'http://localhost:5000',
+        baseURL: 'https://college-demo-backend.onrender.com',
         timeout: 10000,
         withCredentials: true 
     });

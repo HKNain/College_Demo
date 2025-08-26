@@ -28,7 +28,7 @@ const Mentors = () => {
     const fetchImageUrls = async () => {
       try {
         const promises = mentorImageIds.map(id =>
-          fetch(`http://localhost:5000/upload/find/${id}`)
+          fetch(`https://college-demo-backend.onrender.com/upload/find/${id}`)
             .then(res => res.json())
             .then(data => data.fileUrl || "")
             .catch(() => "")
@@ -55,7 +55,7 @@ const Mentors = () => {
       formData.append("file", file);
       // PATCH to update the image by ID
       const response = await fetch(
-        `http://localhost:5000/upload/change/${mentorImageIds[idx]}`,
+        `https://college-demo-backend.onrender.com/upload/change/${mentorImageIds[idx]}`,
         { method: "PATCH", body: formData }
       );
       const data = await response.json();
