@@ -7,13 +7,13 @@ import { getEditContactData, postEditContactData } from "../controllers/editCont
 
 const router = express.Router();
 
-router.patch("/posteditdata",postEditData);
+router.patch("/posteditdata",protectRoute,adminProtectRoute,postEditData);
 router.get("/geteditdata",getEditData)
 
-router.patch("/posteditaboutdata",postEditAboutData);
+router.patch("/posteditaboutdata",protectRoute,adminProtectRoute,postEditAboutData);
 router.get("/geteditaboutdata",getEditAboutData)
 
-router.patch("/posteditcontactdata",postEditContactData);
+router.patch("/posteditcontactdata",protectRoute,adminProtectRoute,postEditContactData);
 router.get("/geteditcontactdata",getEditContactData)
 
 

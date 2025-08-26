@@ -108,7 +108,7 @@ export const getImageUrlById = async (req, res) => {
     const imageId = req.params.id;
 
     // Find image document by ID
-    const imageDoc = await Img.findById(imageId).select("fileUrl");
+    const imageDoc = await Img.findById(imageId);
 
     if (!imageDoc) {
       return res.status(404).json({ error: "Image not found" });
