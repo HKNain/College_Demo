@@ -11,8 +11,14 @@ router.post("/login", login);
 router.get("/logout", logout);
 
 router.get("/me",protectRoute,(req,res)=>{
-    const role = req.user.role
-    return res.json({role})
+    try {
+        const role = req.user.role
+        console.log ( role )
+        return res.json({role})
+
+    } catch ( error ){
+        console.log ( " error in me request ", error)
+    }
 })
 
 export default router;

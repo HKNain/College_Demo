@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { api } from "../utils/axios"; // adjust if path differs
 
-const Contact = () => {
+const Contact = ({role}) => {
   const [contactData, setContactData] = useState({
     ContactHeading1: "CONTACT US",
     ContactHeading2: "IIIT SNP - Studios",
@@ -27,6 +27,7 @@ const Contact = () => {
   }, []);
 
   const handleEdit = (id) => {
+    if ( role === 'Admin')
     setEditableId(id);
   };
 

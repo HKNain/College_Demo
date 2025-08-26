@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate()
-  const [role, setRole] = useState('User'); // Default role
+  const [role, setRole] = useState(''); 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -19,41 +19,35 @@ const Login = () => {
 
   const handleRoleChange = (e) => {
     setRole(e.target.value);
-    // Clear security key if role is changed
     if (e.target.value !== 'Admin') {
       setFormData((prev) => ({ ...prev, securityKey: '' }));
     }
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log('Login Data:', formData, 'Role:', role);
-
-  const dataToSend = { ...formData, role };
+    e.preventDefault();
+    const dataToSend = { ...formData, role }; 
+  
 
   try {
-    const response = await api.post('/api/auth/login', dataToSend, {
-      withCredentials: true, // important so cookie is saved
-    });
-
+    const response = await api.post('/api/auth/login', dataToSend);
     console.log('Login successful:', response.data);
 
-    // ✅ Navigate based on role or just go home
-    if (response.status === 200) {
-      navigate("/")
-    }
+    
+    
+    
+    setFormData({
+      email: '',
+      password: '',
+      securityKey: '',
+    }),
+    setRole('')
 
+    navigate('/')
   } catch (error) {
     console.log('Error in login:', error.response?.data || error.message);
   }
-
-  setFormData({
-    email: '',
-    password: '',
-    securityKey: '',
-  });
-  setRole('User'); // reset to default
-};
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-950">
@@ -89,13 +83,14 @@ const Login = () => {
         </label>
 
         <label className="block mb-4">
-          Role:
+          Role <span className="text-gray-300">(optional)</span>:
           <select
             value={role}
             onChange={handleRoleChange}
             className="w-full border p-2 rounded mt-1"
           >
-            <option value="User">User</option>
+            <option value="">Select role</option>
+            <option value="user">User</option>
             <option value="Admin">Admin</option>
           </select>
         </label>
@@ -118,7 +113,7 @@ const Login = () => {
           type="submit"
           className="w-full bg-black text-white p-2 rounded hover:bg-gray-500 transition"
         >
-          Login
+          login
         </button>
       </form>
     </div>

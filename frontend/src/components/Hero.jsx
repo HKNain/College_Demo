@@ -1,7 +1,23 @@
 import { useState, useEffect, useRef } from "react";
 import { api } from "../utils/axios";
 
-const Hero = () => {
+const Hero = ({role}) => {
+  // const [role,setRole] = useState('user')
+  
+    // useEffect(()=>{
+    //   const handleRole = async () =>{
+    //     try {
+    //       const response = await api.get('/api/auth/me')
+    //       console.log ( response  )
+    //       setRole(response.data.role)
+    //     } catch (error) {
+    //       console.log ( " error inside role part " , error )
+    //       setRole('user')
+    //     }
+    //   }
+    //     handleRole()
+    // },[role])
+
   const [heroData, setHeroData] = useState({
     HeroHeading1:
       "Red Hat Academy turns academic institutions into centers for enterprise-ready talent",
@@ -39,7 +55,8 @@ const Hero = () => {
   }, []);
 
   const handleEdit = (id) => {
-    setEditableId(id);
+    if (role ==='Admin'){
+    setEditableId(id);}
   };
 
   const handleBlur = async (id, e) => {
@@ -83,8 +100,9 @@ const Hero = () => {
 
   // Trigger hidden input when image right-clicked
   const onImageRightClick = (e) => {
+    if ( role ==='Admin'){
     e.preventDefault();
-    fileInputRef.current && fileInputRef.current.click();
+    fileInputRef.current && fileInputRef.current.click();}
   };
 
   // Handle file selection and PATCH new image

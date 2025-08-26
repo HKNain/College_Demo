@@ -46,7 +46,7 @@ console.log (updatedHero)
 
 export const getEditAboutData = async ( req, res ) =>{
       try{
-      const heroData = await editModel.findOne();
+      let heroData = await editModel.findOne();
       
       if (!heroData) {
         heroData = new editModel()
