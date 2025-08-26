@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import About from "../components/About";
 import Contact from "../components/Contact";
@@ -11,9 +11,29 @@ import Info from "../components/Info";
 import Mentors from "../components/Mentors";
 import Navbar from "../components/Navbar";
 import Technical from "../components/Technical";
+import { api } from "../utils/axios";
 
 const MainPage = () => {
   const location = useLocation();
+  const [role,setRole] = useState('user')
+    
+      useEffect(()=>{
+        const handleRole = async () =>{
+          try {
+            const response = await api.get('/api/auth/me')
+            console.log ( response  )
+            setRole(response.data.role)
+          } catch (error) {
+            console.log ( " error inside role part " , error )
+            setRole('user')
+          }
+        }
+          handleRole()
+      },[role])
+
+  
+  
+
 
   useEffect(() => {
     if (location.state?.scrollToId) {
@@ -37,11 +57,11 @@ const MainPage = () => {
       <Navbar />
 
       <div className="bg-white">
-        <Hero />
+        <Hero role={role} />
       </div>
 
       <div className="bg-transparent">
-        <About />
+        <About role={role} />
       </div>
 
       <div className="bg-white">
@@ -51,7 +71,7 @@ const MainPage = () => {
         <Technical />
         <FAQ />
         <Info />
-        <Contact />
+        <Contact role={role} />
         <Footer />
       </div>
     </div>

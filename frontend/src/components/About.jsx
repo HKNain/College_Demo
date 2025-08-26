@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { api } from "../utils/axios"; // adjust path if needed
 
-const About = () => {
+const About = ({role}) => {
   const [aboutData, setAboutData] = useState({
     AboutHeading1: "RedHat Academy SOGI",
     AboutPara: `Red Hat® Academy provides a curriculum to help education institutions keep pace with 
@@ -29,6 +29,7 @@ const About = () => {
   }, []);
 
   const handleEdit = (id) => {
+    if ( role ==='Admin')
     setEditableId(id);
   };
 

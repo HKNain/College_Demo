@@ -14,8 +14,7 @@ export const signup = async (req, res) => {
 
     if (
       !email ||
-      !password ||
-      password.length < 6 
+      !password 
     ) {
       console.log(email, password, role);
       return res

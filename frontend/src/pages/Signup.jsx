@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import {api} from "../utils/axios.js"
- 
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate()
   const [role, setRole] = useState(''); 
   const [formData, setFormData] = useState({
     email: '',
@@ -32,15 +33,20 @@ const Signup = () => {
     const response = await api.post('/api/auth/signup', dataToSend);
     console.log('Signup successful:', response.data);
 
+   
+    
+    
+    setFormData({
+      email: '',
+      password: '',
+      securityKey: '',
+    }),
+    setRole('')
+
+    navigate('/')
   } catch (error) {
     console.log('Error in signUp:', error.response?.data || error.message);
   }
-  setFormData({
-    email: '',
-    password: '',
-    securityKey: '',
-  }),
-  setRole('')
   };
 
   return (
