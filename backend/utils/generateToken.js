@@ -9,7 +9,7 @@ const generateTokenAndSetCookie = (userId,role, res) => {
     maxAge: 15 * 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: true,
-    sameSite: "Strict",
+    sameSite: "None",
   });
 };
 

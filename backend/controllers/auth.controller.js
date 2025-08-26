@@ -84,7 +84,7 @@ export const login = async (req, res) => {
       .json({ error: "Invalid Credentials" });
     }
 
-    if (role === "admin") {
+    if (role === "Admin") {
       if (securityKey !== process.env.ADMIN_SECURITY_KEY) {
         return res.status(400).json({ error: " Wrong Security Key" });
       }
